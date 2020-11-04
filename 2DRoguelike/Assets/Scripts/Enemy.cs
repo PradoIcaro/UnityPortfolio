@@ -4,19 +4,24 @@ using UnityEngine;
 
 public class Enemy : MovingObject
 {
+    private const int MAXHEALTH = 50;
+    private int currentHealth;
     public int playerDamage;
-
+    [SerializeField] HealthBar healthBar; 
     private Animator animator;
     private Transform target;
     private bool skipMove;
     public AudioClip enemyAttack1;
     public AudioClip enemyAttack2;
 
+    public bool IsAlive => currentHealth > 0;
+
     protected override void Start()
     {
         GameManager.instance.AddEnemyToList(this);
         animator = GetComponent<Animator>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        currentHealth = MAXHEALTH;
         base.Start();
         
     }
@@ -55,8 +60,24 @@ public class Enemy : MovingObject
         Player hitPlayer = component as Player;
 
         animator.SetTrigger("EnemyAttack");
-
+        TakeDamage(playerDamage);
         hitPlayer.LoseFood(playerDamage);
         SoundManager.instance.RandomizeSfx(enemyAttack1, enemyAttack2);
+    }
+
+    protected void TakeDamage(int value)
+    {
+        currentHealth-= value;
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+        float normalizedHealth =  ( (float) currentHealth / (float) MAXHEALTH );
+        healthBar.SetBarSize(normalizedHealth);
+    }
+    //ajustar esses nomes e métodos
+    protected void CalculateDamage(float normalizedHealth)
+    {
+        healthBar.SetBarSize(normalizedHealth);
     }
 }

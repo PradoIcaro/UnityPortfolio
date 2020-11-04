@@ -156,7 +156,10 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < enemies.Count; i++)
         {
             //Call the MoveEnemy function of Enemy at index i in the enemies List.
-            enemies[i].MoveEnemy();
+            if (enemies[i].IsAlive)
+            {
+                enemies[i].MoveEnemy();
+            }
 
             //Wait for Enemy's moveTime before moving next Enemy, 
             yield return new WaitForSeconds(enemies[i].moveTime);
