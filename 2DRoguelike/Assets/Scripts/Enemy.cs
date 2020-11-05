@@ -75,9 +75,4 @@ public class Enemy : MovingObject
         float normalizedHealth =  ( (float) currentHealth / (float) MAXHEALTH );
         healthBar.SetBarSize(normalizedHealth);
     }
-    //ajustar esses nomes e métodos
-    protected void CalculateDamage(float normalizedHealth)
-    {
-        healthBar.SetBarSize(normalizedHealth);
-    }
 }

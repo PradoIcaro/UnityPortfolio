@@ -13,9 +13,7 @@ public class HealthBar : MonoBehaviour
         {
             fillValue = 0;
         }
+
         fillBar.localScale = new Vector3(fillValue, 1f);
     }
-
-    
-    
 }

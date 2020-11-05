@@ -546,34 +546,6 @@ PrefabInstance:
       propertyPath: foodText
       value: 
       objectReference: {fileID: 1341758022}
-    - target: {fileID: 102870819, guid: 5ed8a67f5377be3459d806aff39352aa, type: 3}
-      propertyPath: moveSound1
-      value: 
-      objectReference: {fileID: 8300000, guid: 892962212a4b74d1c9f578a3b6ea6439, type: 3}
-    - target: {fileID: 102870819, guid: 5ed8a67f5377be3459d806aff39352aa, type: 3}
-      propertyPath: moveSound2
-      value: 
-      objectReference: {fileID: 8300000, guid: a826bc3d758db43d6ae9caf415b63d1d, type: 3}
-    - target: {fileID: 102870819, guid: 5ed8a67f5377be3459d806aff39352aa, type: 3}
-      propertyPath: eatSound1
-      value: 
-      objectReference: {fileID: 8300000, guid: 1cb61f83d60374c7389bb547431919e3, type: 3}
-    - target: {fileID: 102870819, guid: 5ed8a67f5377be3459d806aff39352aa, type: 3}
-      propertyPath: eatSound2
-      value: 
-      objectReference: {fileID: 8300000, guid: 062161c1897a54088a5430f8c197e1b8, type: 3}
-    - target: {fileID: 102870819, guid: 5ed8a67f5377be3459d806aff39352aa, type: 3}
-      propertyPath: drinkSound1
-      value: 
-      objectReference: {fileID: 8300000, guid: b6b608537288246c9a464915db27bf52, type: 3}
-    - target: {fileID: 102870819, guid: 5ed8a67f5377be3459d806aff39352aa, type: 3}
-      propertyPath: drinkSound2
-      value: 
-      objectReference: {fileID: 8300000, guid: bcb9dda73ee914d3e8f252895f73f461, type: 3}
-    - target: {fileID: 102870819, guid: 5ed8a67f5377be3459d806aff39352aa, type: 3}
-      propertyPath: gameOverSound
-      value: 
-      objectReference: {fileID: 8300000, guid: e2beefeb2273f4efe992adf5b8d67c29, type: 3}
     - target: {fileID: 5372132703395870992, guid: 5ed8a67f5377be3459d806aff39352aa,
         type: 3}
       propertyPath: m_Name
