@@ -6,10 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class Player : MovingObject
 {
-    public int wallDamage = 1;
-    public int pointsPerFood = 10;
-    public int pointsPerSoda = 20;
-    public float restarLevelDelay = 1f;
+    [SerializeField] int baseAttackPower = 10;
+    public int _wallDamage = 1;
+    public int _pointsPerFood = 10;
+    public int _pointsPerSoda = 20;
+    public float _restarLevelDelay = 1f;
     public Text foodText;
     public AudioClip moveSound1;
     public AudioClip moveSound2;
@@ -21,13 +22,20 @@ public class Player : MovingObject
 
     private Animator animator;
     private int food;
+    private int currentPower;
     // Start is called before the first frame update
+
+    public int GetDamageDealt()
+    {
+        return CalculateAttackDamage();
+    }
     protected override void Start()
     {
         animator = GetComponent<Animator>();
         food = GameManager.instance.playerFoodPoints;
         foodText.text = "Food: " + food;
         base.Start();
+        currentPower = baseAttackPower;
     }
 
     private void OnDisable()
@@ -96,21 +104,21 @@ public class Player : MovingObject
     {
         if (other.tag == "Exit")
         {
-            Invoke("Restart", restarLevelDelay);
+            Invoke("Restart", _restarLevelDelay);
             enabled = false;
         }
         else if (other.tag == "Food")
         {
-            food += pointsPerFood;
+            food += _pointsPerFood;
             SoundManager.instance.RandomizeSfx(eatSound1, eatSound2);
-            foodText.text = "+" + pointsPerFood + " Food: " + food;
+            foodText.text = "+" + _pointsPerFood + " Food: " + food;
             other.gameObject.SetActive(false);
         }
         else if (other.tag == "Soda")
         {
-            food += pointsPerSoda;
+            food += _pointsPerSoda;
             SoundManager.instance.RandomizeSfx(drinkSound1, drinkSound2);
-            foodText.text = "+" + pointsPerSoda + " Refreshing! " + food;
+            foodText.text = "+" + _pointsPerSoda + " Refreshing! " + food;
             other.gameObject.SetActive(false);
         }
     }
@@ -118,7 +126,7 @@ public class Player : MovingObject
     protected override void OnCantMove<T>(T component)
     {
         Wall hitWall = component as Wall;
-        hitWall.DamageWall(wallDamage);
+        hitWall.DamageWall(_wallDamage);
 
         animator.SetTrigger("PlayerChop");
     }
@@ -129,5 +137,9 @@ public class Player : MovingObject
        //Application.LoadLevel(Application.loadedLevel);
     }
 
-   
+    private int CalculateAttackDamage()
+    {
+        return currentPower;
+    }
+    
 }

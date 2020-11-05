@@ -60,7 +60,7 @@ public class Enemy : MovingObject
         Player hitPlayer = component as Player;
 
         animator.SetTrigger("EnemyAttack");
-        TakeDamage(playerDamage);
+        TakeDamage(hitPlayer.GetDamageDone());
         hitPlayer.LoseFood(playerDamage);
         SoundManager.instance.RandomizeSfx(enemyAttack1, enemyAttack2);
     }
