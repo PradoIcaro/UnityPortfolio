@@ -23,7 +23,6 @@ public class Player : MovingObject
     private Animator animator;
     private int food;
     private int currentPower;
-    // Start is called before the first frame update
 
     public int GetDamageDealt()
     {
@@ -42,7 +41,7 @@ public class Player : MovingObject
     {
         GameManager.instance.playerFoodPoints = food;
     }
-    // Update is called once per frame
+ 
     void Update()
     {
         if (!GameManager.instance.playersTurn)
