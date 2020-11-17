@@ -44,16 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fc05ad113281f24ca12f35350e10bb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  columns: 8
-  rows: 8
-  wallCount:
-    minimum: 5
-    maximum: 9
-  foodCount:
-    minimum: 1
-    maximum: 5
-  exit: {fileID: 6355934931472807078, guid: 9d339e45ff033464a87ad4487465fb3f, type: 3}
-  floorTiles:
+  m_columns: 8
+  m_rows: 8
+  m_exit: {fileID: 6355934931472807078, guid: 9d339e45ff033464a87ad4487465fb3f, type: 3}
+  m_floorTiles:
   - {fileID: 8140261613772830261, guid: 20c7cb5ab74fe684ab4a45475a84172b, type: 3}
   - {fileID: 4286680262709017952, guid: 922799e34a95fb54986d4ea3b317b71b, type: 3}
   - {fileID: 1117174358552734997, guid: dccf8aa69140f4642bdbf6921eb35d05, type: 3}
@@ -62,7 +56,7 @@ MonoBehaviour:
   - {fileID: 4772921751993142724, guid: 292a39e370ba38248a5504a45533c53b, type: 3}
   - {fileID: 547949208520275710, guid: 786053ea5a51799448c9e85c32cb0b86, type: 3}
   - {fileID: 5248078900419728402, guid: 64ddf24ee273f2341bcc44511158a396, type: 3}
-  wallTiles:
+  m_wallTiles:
   - {fileID: 2635940132776846248, guid: 1408875e27708404abfef386253f2a2b, type: 3}
   - {fileID: 1399450888804641542, guid: 79ad8d53dad92e747af515bfc262ab22, type: 3}
   - {fileID: 9048302859977034988, guid: 83345b50542fd9140bb4df744921208a, type: 3}
@@ -71,13 +65,13 @@ MonoBehaviour:
   - {fileID: 4769059534618077132, guid: 82008216d92c02c4985016f5b9aa95cb, type: 3}
   - {fileID: 1039953617800551645, guid: 7b486dcfa59152f47910a38fa518fb61, type: 3}
   - {fileID: 8434251962861135801, guid: 5b9caa6cdbdc46c4883d468805e92421, type: 3}
-  foodTiles:
+  m_foodTiles:
   - {fileID: 3680864236888150559, guid: 6458a2c63dd9d164d90ba3f3817d634a, type: 3}
   - {fileID: 351483288587041143, guid: d665bd162724004478fcabdffd133bea, type: 3}
-  enemyTiles:
+  m_enemyTiles:
   - {fileID: 4858491968323304015, guid: 36d9efcc091622a4dbdfe54d69827b82, type: 3}
   - {fileID: 8574680843498137407, guid: 34779841be7ccc2438e944168e794266, type: 3}
-  outerWallTiles:
+  m_outerWallTiles:
   - {fileID: 2480947316904490296, guid: b17b76d0c043c5a409d4ea2b8a0275b6, type: 3}
   - {fileID: 6169817523604378164, guid: f3e03916647fd624387551740eeb0fc2, type: 3}
   - {fileID: 3201153550967150622, guid: 7042f95e224b7f24e89406026126aa70, type: 3}

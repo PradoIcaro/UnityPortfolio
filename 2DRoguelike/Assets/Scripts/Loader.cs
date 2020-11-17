@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Loader : MonoBehaviour
 {
-
-    public GameObject GameManager;
+    [SerializeField]
+    private GameObject m_gameManager;
 
     // Start is called before the first frame update
     void Awake()
     {
         if (global::GameManager.instance == null)
         {
-            Instantiate(GameManager);
+            Instantiate(m_gameManager);
         }
     }
 }

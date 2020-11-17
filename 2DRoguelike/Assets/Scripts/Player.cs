@@ -11,7 +11,7 @@ public class Player : MovingObject
     private int m_pointsPerFood = 10;
     private int m_pointsPerSoda = 20;
     private float m_restarLevelDelay = 1f;
-    private Text m_foodText;
+    [SerializeField] private Text m_foodText;
     private readonly AudioClip m_moveSound1;
     private readonly AudioClip m_moveSound2;
     private readonly AudioClip m_eatSound1;

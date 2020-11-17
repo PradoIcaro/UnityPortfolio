@@ -4,7 +4,8 @@ using System.Collections;
 
 public class SoundManager : MonoBehaviour
 {
-    private readonly AudioSource m_efxSource;                    //Drag a reference to the audio source which will play the sound effects.
+    [SerializeField]
+    private  AudioSource m_efxSource;                    //Drag a reference to the audio source which will play the sound effects.
     private const float LOW_PITCH_RANGE = .95f;                //The lowest a sound effect will be randomly pitched.
     private const float HIGH_PITCH_RANGE = 1.05f;            //The highest a sound effect will be randomly pitched.
 

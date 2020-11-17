@@ -467,7 +467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73718e84867cc90488f0033e3ad896bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 6411370532872099831, guid: 1bfe62c3f17ab2a44b5a9d5a8d411c6d,
+  m_gameManager: {fileID: 6411370532872099831, guid: 1bfe62c3f17ab2a44b5a9d5a8d411c6d,
     type: 3}
 --- !u!1 &1140238190
 GameObject:
@@ -543,7 +543,7 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 102870819, guid: 5ed8a67f5377be3459d806aff39352aa, type: 3}
-      propertyPath: foodText
+      propertyPath: m_foodText
       value: 
       objectReference: {fileID: 1341758022}
     - target: {fileID: 5372132703395870992, guid: 5ed8a67f5377be3459d806aff39352aa,
@@ -653,10 +653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23b63f9fc94c0c74db4db40bea0f65fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  efxSource: {fileID: 1291971408}
-  musicSource: {fileID: 1291971407}
-  lowPitchRange: 0.95
-  highPitchRange: 1.05
+  m_efxSource: {fileID: 1291971408}
 --- !u!82 &1291971407
 AudioSource:
   m_ObjectHideFlags: 0

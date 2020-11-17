@@ -30,17 +30,26 @@ public class BoardManager : MonoBehaviour
             Maximum = max;
         }
     }
-
+    [Header ("Serialized Variables")]
+    [SerializeField]
     private int m_columns = 8;
-    private int m_rows = 8;
+    [SerializeField]
+    private int m_rows = 8;        
+    [SerializeField]
+    private GameObject m_exit;
+    [SerializeField]
+    private GameObject[] m_floorTiles;
+    [SerializeField]
+    private GameObject[] m_wallTiles;
+    [SerializeField]
+    private GameObject[] m_foodTiles;
+    [SerializeField]
+    private GameObject[] m_enemyTiles;
+    [SerializeField]
+    private GameObject[] m_outerWallTiles;
+
     private Count m_wallCount = new Count(5,9);
     private Count m_foodCount = new Count(1,5);
-    private GameObject m_exit;
-    private GameObject[] m_floorTiles;
-    private GameObject[] m_wallTiles;
-    private GameObject[] m_foodTiles;
-    private GameObject[] m_enemyTiles;
-    private GameObject[] m_outerWallTiles;
 
     private Transform m_boardHolder;
     private List<Vector3> m_gridPositions =  new List<Vector3>();

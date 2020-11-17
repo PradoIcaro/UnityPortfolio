@@ -5,25 +5,24 @@ using UnityEngine;
 public class Wall : MonoBehaviour
 {
 
-    public Sprite DamageSprite;
-    public int Hp = 4;
+    private Sprite m_damageSprite;
+    private int m_hp = 4;
     private readonly AudioClip m_chopSound1;
     private readonly AudioClip m_chopSound2;
-
-    private SpriteRenderer spriteRenderer;
-    // Start is called before the first frame update
+    private SpriteRenderer m_spriteRenderer;
+    
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        m_spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public void DamageWall(int loss)
     {
         SoundManager.Instance.RandomizeSfx(m_chopSound1, m_chopSound2);
-        spriteRenderer.sprite = DamageSprite;
-        Hp -= loss;
+        m_spriteRenderer.sprite = m_damageSprite;
+        m_hp -= loss;
 
-        if (Hp <= 0)
+        if (m_hp <= 0)
         {
             gameObject.SetActive(false);
         }
