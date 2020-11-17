@@ -3,26 +3,26 @@ using UnityEngine;
 
 public abstract class MovingObject : MonoBehaviour
 {
-    public float moveTime = 0.1f;            //Time it will take object to move, in seconds.
-    public LayerMask blockingLayer;            //Layer on which collision will be checked.
+    public float MoveTime = 0.1f;            //Time it will take object to move, in seconds.
+    public LayerMask BlockingLayer;            //Layer on which collision will be checked.
 
 
-    private BoxCollider2D boxCollider;         //The BoxCollider2D component attached to this object.
-    private Rigidbody2D rb2D;                //The Rigidbody2D component attached to this object.
-    private float inverseMoveTime;            //Used to make movement more efficient.
+    private BoxCollider2D m_boxCollider;         //The BoxCollider2D component attached to this object.
+    private Rigidbody2D m_rb2D;                //The Rigidbody2D component attached to this object.
+    private float m_inverseMoveTime;            //Used to make movement more efficient.
 
 
     //Protected, virtual functions can be overridden by inheriting classes.
     protected virtual void Start()
     {
         //Get a component reference to this object's BoxCollider2D
-        boxCollider = GetComponent<BoxCollider2D>();
+        m_boxCollider = GetComponent<BoxCollider2D>();
 
         //Get a component reference to this object's Rigidbody2D
-        rb2D = GetComponent<Rigidbody2D>();
+        m_rb2D = GetComponent<Rigidbody2D>();
 
         //By storing the reciprocal of the move time we can use it by multiplying instead of dividing, this is more efficient.
-        inverseMoveTime = 1f / moveTime;
+        m_inverseMoveTime = 1f / MoveTime;
     }
 
 
@@ -37,13 +37,13 @@ public abstract class MovingObject : MonoBehaviour
         Vector2 end = start + new Vector2 (xDir, yDir);
 
         //Disable the boxCollider so that linecast doesn't hit this object's own collider.
-        boxCollider.enabled = false;
+        m_boxCollider.enabled = false;
 
         //Cast a line from start point to end point checking collision on blockingLayer.
-        hit = Physics2D.Linecast(start, end, blockingLayer);
+        hit = Physics2D.Linecast(start, end, BlockingLayer);
 
         //Re-enable boxCollider after linecast
-        boxCollider.enabled = true;
+        m_boxCollider.enabled = true;
 
         //Check if anything was hit
         if (hit.transform == null)
@@ -71,10 +71,10 @@ public abstract class MovingObject : MonoBehaviour
         while (sqrRemainingDistance > float.Epsilon)
         {
             //Find a new position proportionally closer to the end, based on the moveTime
-            Vector3 newPostion = Vector3.MoveTowards(rb2D.position, end, inverseMoveTime * Time.deltaTime);
+            Vector3 newPostion = Vector3.MoveTowards(m_rb2D.position, end, m_inverseMoveTime * Time.deltaTime);
 
             //Call MovePosition on attached Rigidbody2D and move it to the calculated position.
-            rb2D.MovePosition(newPostion);
+            m_rb2D.MovePosition(newPostion);
 
             //Recalculate the remaining distance after moving.
             sqrRemainingDistance = (transform.position - end).sqrMagnitude;

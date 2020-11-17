@@ -4,21 +4,22 @@ using System.Collections;
 
 public class SoundManager : MonoBehaviour
 {
-    public AudioSource efxSource;                    //Drag a reference to the audio source which will play the sound effects.
-    public AudioSource musicSource;                    //Drag a reference to the audio source which will play the music.
-    public static SoundManager instance = null;        //Allows other scripts to call functions from SoundManager.                
-    public float lowPitchRange = .95f;                //The lowest a sound effect will be randomly pitched.
-    public float highPitchRange = 1.05f;            //The highest a sound effect will be randomly pitched.
+    private readonly AudioSource m_efxSource;                    //Drag a reference to the audio source which will play the sound effects.
+    private const float LOW_PITCH_RANGE = .95f;                //The lowest a sound effect will be randomly pitched.
+    private const float HIGH_PITCH_RANGE = 1.05f;            //The highest a sound effect will be randomly pitched.
 
+    public static SoundManager Instance { get; private set; } = null;
+    public AudioSource MusicSource { get;
+        set; }
 
     void Awake()
     {
         //Check if there is already an instance of SoundManager
-        if (instance == null)
+        if (Instance == null)
             //if not, set it to this.
-            instance = this;
+            Instance = this;
         //If instance already exists:
-        else if (instance != this)
+        else if (Instance != this)
             //Destroy this, this enforces our singleton pattern so there can only be one instance of SoundManager.
             Destroy(gameObject);
 
@@ -31,10 +32,10 @@ public class SoundManager : MonoBehaviour
     public void PlaySingle(AudioClip clip)
     {
         //Set the clip of our efxSource audio source to the clip passed in as a parameter.
-        efxSource.clip = clip;
+        m_efxSource.clip = clip;
 
         //Play the clip.
-        efxSource.Play();
+        m_efxSource.Play();
     }
 
 
@@ -45,15 +46,15 @@ public class SoundManager : MonoBehaviour
         int randomIndex = Random.Range(0, clips.Length);
 
         //Choose a random pitch to play back our clip at between our high and low pitch ranges.
-        float randomPitch = Random.Range(lowPitchRange, highPitchRange);
+        float randomPitch = Random.Range(LOW_PITCH_RANGE, HIGH_PITCH_RANGE);
 
         //Set the pitch of the audio source to the randomly chosen pitch.
-        efxSource.pitch = randomPitch;
+        m_efxSource.pitch = randomPitch;
 
         //Set the clip to the clip at our randomly chosen index.
-        efxSource.clip = clips[randomIndex];
+        m_efxSource.clip = clips[randomIndex];
 
         //Play the clip.
-        efxSource.Play();
+        m_efxSource.Play();
     }
 }

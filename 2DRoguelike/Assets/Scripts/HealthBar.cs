@@ -5,7 +5,7 @@ using System;
 
 public class HealthBar : MonoBehaviour
 {
-    [SerializeField]Transform fillBar;      
+    [SerializeField]Transform m_fillBar;      
     
     public void SetBarSize(float fillValue)
     {
@@ -14,6 +14,6 @@ public class HealthBar : MonoBehaviour
             fillValue = 0;
         }
 
-        fillBar.localScale = new Vector3(fillValue, 1f);
+        m_fillBar.localScale = new Vector3(fillValue, 1f);
     }
 }

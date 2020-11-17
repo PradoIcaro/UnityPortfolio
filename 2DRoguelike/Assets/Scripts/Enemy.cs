@@ -5,37 +5,42 @@ using UnityEngine;
 public class Enemy : MovingObject
 {
     private const int MAXHEALTH = 50;
-    private int currentHealth;
-    public int playerDamage;
-    [SerializeField] HealthBar healthBar; 
-    private Animator animator;
-    private Transform target;
-    private bool skipMove;
-    public AudioClip enemyAttack1;
-    public AudioClip enemyAttack2;
+    private int m_currentHealth;
+    public int PlayerDamage;
+    [SerializeField] HealthBar m_healthBar; 
+    private Animator m_animator;
+    private Transform m_target;
+    private bool m_skipMove;
+    private readonly AudioClip m_enemyAttack1;
+    private readonly AudioClip m_enemyAttack2;
 
-    public bool IsAlive => currentHealth > 0;
+    public Enemy(int playerDamage)
+    {
+        PlayerDamage = playerDamage;
+    }
+
+    public bool IsAlive => m_currentHealth > 0;
 
     protected override void Start()
     {
         GameManager.instance.AddEnemyToList(this);
-        animator = GetComponent<Animator>();
-        target = GameObject.FindGameObjectWithTag("Player").transform;
-        currentHealth = MAXHEALTH;
+        m_animator = GetComponent<Animator>();
+        m_target = GameObject.FindGameObjectWithTag("Player").transform;
+        m_currentHealth = MAXHEALTH;
         base.Start();
         
     }
         
     protected override void AttemptMove<T>(int xDir, int yDir)
     {
-        if (skipMove)
+        if (m_skipMove)
         {
-            skipMove = false;
+            m_skipMove = false;
             return;
         }
 
         base.AttemptMove<T>(xDir, yDir);
-        skipMove = true;
+        m_skipMove = true;
     }
 
     public void MoveEnemy()
@@ -43,13 +48,13 @@ public class Enemy : MovingObject
         int xDir = 0 ;
         int yDir = 0 ;
 
-        if (Mathf.Abs(target.position.x - transform.position.x) < float.Epsilon)
+        if (Mathf.Abs(m_target.position.x - transform.position.x) < float.Epsilon)
         {
-            yDir = target.position.y > transform.position.y ? 1 : -1;
+            yDir = m_target.position.y > transform.position.y ? 1 : -1;
         }
         else
         {
-            xDir = target.position.x > transform.position.x ? 1 : -1;
+            xDir = m_target.position.x > transform.position.x ? 1 : -1;
         }
 
         AttemptMove<Player>(xDir, yDir);
@@ -59,20 +64,20 @@ public class Enemy : MovingObject
     {
         Player hitPlayer = component as Player;
 
-        animator.SetTrigger("EnemyAttack");
+        m_animator.SetTrigger("EnemyAttack");
         TakeDamage(hitPlayer.GetDamageDealt());
-        hitPlayer.LoseFood(playerDamage);
-        SoundManager.instance.RandomizeSfx(enemyAttack1, enemyAttack2);
+        hitPlayer.LoseFood(PlayerDamage);
+        SoundManager.Instance.RandomizeSfx(m_enemyAttack1, m_enemyAttack2);
     }
 
     protected void TakeDamage(int value)
     {
-        currentHealth-= value;
-        if (currentHealth <= 0)
+        m_currentHealth-= value;
+        if (m_currentHealth <= 0)
         {
             Destroy(gameObject);
         }
-        float normalizedHealth =  ( (float) currentHealth / (float) MAXHEALTH );
-        healthBar.SetBarSize(normalizedHealth);
+        float normalizedHealth =  ( (float) m_currentHealth / (float) MAXHEALTH );
+        m_healthBar.SetBarSize(normalizedHealth);
     }
 }

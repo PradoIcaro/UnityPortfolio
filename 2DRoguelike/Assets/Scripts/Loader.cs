@@ -5,14 +5,14 @@ using UnityEngine;
 public class Loader : MonoBehaviour
 {
 
-    public GameObject gameManager;
+    public GameObject GameManager;
 
     // Start is called before the first frame update
     void Awake()
     {
-        if (GameManager.instance == null)
+        if (global::GameManager.instance == null)
         {
-            Instantiate(gameManager);
+            Instantiate(GameManager);
         }
     }
 }
