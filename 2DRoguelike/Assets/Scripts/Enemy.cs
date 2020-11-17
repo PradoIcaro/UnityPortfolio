@@ -6,13 +6,17 @@ public class Enemy : MovingObject
 {
     private const int MAXHEALTH = 50;
     private int m_currentHealth;
+    
+    private Transform m_target;
+    private bool m_skipMove;
+    [SerializeField]
     public int PlayerDamage;
     [SerializeField] HealthBar m_healthBar; 
     private Animator m_animator;
-    private Transform m_target;
-    private bool m_skipMove;
-    private readonly AudioClip m_enemyAttack1;
-    private readonly AudioClip m_enemyAttack2;
+    [SerializeField]
+    private AudioClip m_enemyAttack1;
+    [SerializeField]
+    private AudioClip m_enemyAttack2;
 
     public Enemy(int playerDamage)
     {

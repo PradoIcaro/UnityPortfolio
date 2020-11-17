@@ -348,4 +348,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2241c8ad5d2ae5a4b8f18a8bfd7126d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fillBar: {fileID: 2059998560920117506}
+  m_fillBar: {fileID: 2059998560920117506}

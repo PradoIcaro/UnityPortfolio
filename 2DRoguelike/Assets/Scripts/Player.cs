@@ -6,19 +6,32 @@ using UnityEngine.SceneManagement;
 
 public class Player : MovingObject
 {
-    [SerializeField] int m_baseAttackPower = 10;
-    private readonly int m_wallDamage = 1;
+    [SerializeField] 
+    int m_baseAttackPower = 10;
+    [SerializeField]
+    private int m_wallDamage = 1;
+    [SerializeField]
     private int m_pointsPerFood = 10;
+    [SerializeField]
     private int m_pointsPerSoda = 20;
+    [SerializeField]
     private float m_restarLevelDelay = 1f;
-    [SerializeField] private Text m_foodText;
-    private readonly AudioClip m_moveSound1;
-    private readonly AudioClip m_moveSound2;
-    private readonly AudioClip m_eatSound1;
-    private readonly AudioClip m_eatSound2;
-    private readonly AudioClip m_drinkSound1;
-    private readonly AudioClip m_drinkSound2;
-    private readonly AudioClip m_gameOverSound;
+    [SerializeField]
+    private Text m_foodText;
+    [SerializeField]
+    private AudioClip m_moveSound1;
+    [SerializeField]
+    private AudioClip m_moveSound2;
+    [SerializeField]
+    private AudioClip m_eatSound1;
+    [SerializeField]
+    private AudioClip m_eatSound2;
+    [SerializeField]
+    private AudioClip m_drinkSound1;
+    [SerializeField]
+    private AudioClip m_drinkSound2;
+    [SerializeField]
+    private AudioClip m_gameOverSound;
 
     private Animator m_animator;
     private int m_food;
@@ -86,7 +99,7 @@ public class Player : MovingObject
         if (m_food <= 0)
         {
             SoundManager.Instance.PlaySingle(m_gameOverSound);
-            SoundManager.Instance.MusicSource.Stop();
+            SoundManager.Instance.GetMusicSource.Stop();
             GameManager.instance.GameOver();
         }
         

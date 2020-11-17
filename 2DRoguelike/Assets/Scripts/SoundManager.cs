@@ -6,13 +6,12 @@ public class SoundManager : MonoBehaviour
 {
     [SerializeField]
     private  AudioSource m_efxSource;                    //Drag a reference to the audio source which will play the sound effects.
+    [SerializeField] AudioSource m_musicSource;
     private const float LOW_PITCH_RANGE = .95f;                //The lowest a sound effect will be randomly pitched.
     private const float HIGH_PITCH_RANGE = 1.05f;            //The highest a sound effect will be randomly pitched.
 
-    public static SoundManager Instance { get; private set; } = null;
-    public AudioSource MusicSource { get;
-        set; }
-
+    public static SoundManager Instance  = null;
+    public AudioSource GetMusicSource => m_musicSource;
     void Awake()
     {
         //Check if there is already an instance of SoundManager

@@ -3,6 +3,7 @@ using UnityEngine;
 
 public abstract class MovingObject : MonoBehaviour
 {
+    [SerializeField]
     public float MoveTime = 0.1f;            //Time it will take object to move, in seconds.
     public LayerMask BlockingLayer;            //Layer on which collision will be checked.
 

@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class Wall : MonoBehaviour
 {
+    [SerializeField]
+    private Sprite m_damageSprite;    
+    [SerializeField]
+    private  AudioClip m_chopSound1;
+    [SerializeField]
+    private  AudioClip m_chopSound2;
 
-    private Sprite m_damageSprite;
-    private int m_hp = 4;
-    private readonly AudioClip m_chopSound1;
-    private readonly AudioClip m_chopSound2;
-    private SpriteRenderer m_spriteRenderer;
     
+    private SpriteRenderer m_spriteRenderer;
+    private int m_hp = 4;
+
     void Start()
     {
         m_spriteRenderer = GetComponent<SpriteRenderer>();

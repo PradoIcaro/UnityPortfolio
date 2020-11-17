@@ -654,6 +654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_efxSource: {fileID: 1291971408}
+  m_musicSource: {fileID: 1291971407}
 --- !u!82 &1291971407
 AudioSource:
   m_ObjectHideFlags: 0
